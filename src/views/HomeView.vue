@@ -1,16 +1,19 @@
 <template>
-  <div class="home">
-    <div>Homepage</div>
-  </div>
+    <v-app>
+        <v-main>
+            <v-container>
+                <span class="font-light-italic">HOMEPAGE</span>
+            </v-container>
+        </v-main>
+    </v-app>
 </template>
 
 <script>
-import productsApi from '@/api/productsApi.js';
+import productsApi from "@/api/productsApi.js";
 
 export default {
-  name: 'HomeView',
-  components: {
-  },
+  name: "HomeView",
+  components: {},
   data() {
     return {
       products: [],
@@ -25,9 +28,9 @@ export default {
         const response = await productsApi.getAllProducts();
         this.products = response.data;
       } catch (error) {
-        console.error('HomeView - getAllProducts - Error fetching data:', error);
+        console.error("HomeView - getAllProducts - Error fetching data:", error);
       }
     },
   },
-}
+};
 </script>

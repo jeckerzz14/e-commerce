@@ -1,0 +1,51 @@
+body {
+    font-family: $family-primary;
+    color: $secondary-dark;
+    font-size: 1em;
+    line-height: 1.5;
+}
+  
+// Override specific Vuetify classes
+.v-application {
+    font-family: $family-primary;
+}
+
+/*
+* Fonts
+*/
+.font-regular {
+    font-family: $family-primary;
+    font-weight: $weight-normal;
+}
+
+.font-bold {
+    font-family: $family-primary;
+    font-weight: $weight-semibold;
+}
+
+.font-thin {
+    font-family: $family-primary;
+    font-weight: $weight-thin;
+}
+
+.font-extra-light {
+    font-family: $family-primary;
+    font-weight: $weight-extra-thin;
+}
+
+.font-extra-light-italic {
+    font-family: $family-primary;
+    font-weight: $weight-extra-thin;
+    font-style: italic;
+}
+
+.font-light {
+    font-family: $family-primary;
+    font-weight: $weight-light;
+}
+
+.font-light-italic {
+    font-family: $family-primary;
+    font-weight: $weight-light;
+    font-style: italic;
+}

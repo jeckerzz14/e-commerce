@@ -1,0 +1,53 @@
+/*
+* Colors
+*/
+// primary
+$primary: #ffc13b;
+$primary-dark: #e6b42d;
+$primary-light: #ffc836;
+
+// secondary
+$secondary:#4e545b;
+$secondary-dark: #35343a;
+$secondary-light:  #706f77;
+
+// danger
+$danger: #f5365c;
+$danger-dark: #dc3545;
+$danger-light: #ff6a7f;
+$danger-soft: #FF6C72;
+$danger-invert: findColorInvert($danger);
+$danger-gradient: linear-gradient(to right, #fb5058, #ff7372);
+
+// warning
+$warning: #ff801e;
+$warning-dark: #e55e18;
+$warning-light: #ff8d45;
+$warning-invert: findColorInvert($warning);
+$warning-gradient: linear-gradient(to right, #ff801f, #ffab76);
+
+// success
+$success: #27bf54;
+$success-dark: #0a9448;
+$success-light: #38ca71;
+$success-invert: findColorInvert($success);
+$success-gradient: linear-gradient(to right, #27bf54, #49e889);
+
+// info
+$info: #11cdef;
+$info-dark: #00abca;
+$info-light: #5ce3fb;
+$info-invert: findColorInvert($info);
+$info-gradient: linear-gradient(to right, #15c3e2, #5be3fb);
+
+// shades
+$shade: #c4d2e8;
+$shade-dark: #79849e;
+$shade-light: #e8f1ff;
+$shade-card: #E6E9ED;
+$shade-collapse: #f1f1f3;
+$shade-hover: #F7F7F8;
+
+// general
+$white: #fff;
+$black: #000;
