@@ -8,6 +8,10 @@ body {
 // Override specific Vuetify classes
 .v-application {
     font-family: $family-primary;
+
+    * {
+        font-family: inherit;
+    }
 }
 
 /*
