@@ -10,6 +10,7 @@
             class="zoom-on-hover"
             height="200"
             cover
+            loading="lazy"
         >
         </v-img>
 

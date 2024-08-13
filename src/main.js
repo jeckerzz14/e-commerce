@@ -9,24 +9,19 @@ import VueAxios from 'vue-axios';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
+import 'vuetify/styles';
+
+// Material Design Icons
+import '@mdi/font/css/materialdesignicons.css';
+
+// Global
 import '@/assets/styles/main.scss';
 
 const vuetify = createVuetify({
     components,
     directives,
-    theme: {
-        themes: {
-            light: {
-                fonts: {
-                    fontFamily: 'Poppins, sans-serif',
-                },
-            },
-            dark: {
-                fonts: {
-                    fontFamily: 'Poppins, sans-serif',
-                },
-            },
-        },
+    icons: {
+        iconfont: 'mdi',
     },
 })
 const app = createApp(App);
