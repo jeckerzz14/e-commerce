@@ -1,12 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
-const HomeView = () => import(/* webpackChunkName: "about" */ '../views/HomeView.vue');
-const NotFound = () => import(/* webpackChunkName: "about" */ '../views/NotFound.vue');
+
+// Views
+const HomeView = () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue');
+const Product = () => import(/* webpackChunkName: "product" */ '../views/Product.vue');
+const NotFound = () => import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue');
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: Product
   },
   {
     path: "/:catchAll(.*)",

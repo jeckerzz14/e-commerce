@@ -32,9 +32,7 @@ export default {
   },
   methods: {
     viewProduct(data) {
-        console.log('view product -', data.id, data.price);
-
-        // router.push /product/:id
+        this.$router.push(`/product/${data.id}`);
     }
   }
 };
