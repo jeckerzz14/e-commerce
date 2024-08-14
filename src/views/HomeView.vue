@@ -13,7 +13,7 @@
             <h3 class="text-h6 font-bold">Products</h3>
             <v-row v-if="!products.isLoading">
                 <v-col v-for="product in products.data" :key="product.id" cols="12" md="2">
-                    <product-list :product="product"/>
+                    <ProductList :product="product"/>
                 </v-col>
             </v-row>
             <v-skeleton-loader type="card" v-else></v-skeleton-loader>
@@ -68,7 +68,7 @@ export default {
     },
     handleCategory (categorySelected) {
         // improvements - store in vuex-persist
-        this.categories.selectedId = categorySelected.id;
+        this.categories.selectedId = categorySelected?.id;
 
         this.getAllProducts({
             categoryId: this.categories.selectedId || null,

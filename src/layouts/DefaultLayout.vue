@@ -2,9 +2,9 @@
     <v-app>
         <v-main>
             <Header />
-            <main>
+            <div>
                 <slot></slot>
-            </main>
+            </div>
             <Footer />
         </v-main>
     </v-app>

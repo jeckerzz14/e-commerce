@@ -11,7 +11,7 @@
           class="ma-4"
           height="180"
           width="150"
-          @click="selectCategory(cat, toggle)"
+          @click="selectCategory(cat, toggle, isSelected)"
         >
           <div class="d-flex fill-height align-center justify-center">
             <v-scale-transition>
@@ -64,8 +64,9 @@ export default {
             this.categories.isLoading = false;
         }
     },
-    selectCategory(data, toggle) {
-        this.$emit('selectCategory', data);
+    selectCategory(data, toggle, isSelected) {
+        const categoryDetail = !isSelected ? data : null;
+        this.$emit('selectCategory', categoryDetail);
 
         toggle(); // Call the toggle function from v-slot
     }
