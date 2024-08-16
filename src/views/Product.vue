@@ -27,10 +27,10 @@
                             
                             <div class="price my-3"> ₱{{ product?.data.price }} </div>
 
-                            <div class="font-extra-light-italic mb-2">Total Price: ₱{{ totalPrice || product?.data.price }}</div>
+                            <div class="font-extra-light-italic mb-2">Total Price: ₱{{ TOTAL_PRICE || product?.data.price }}</div>
                         </div>
 
-                        <QuantityInput @changeQty="changeQty"/>
+                        <QuantityInput v-model="product.quantity" @changeQty="changeQty"/>
 
                         <div class="button-wrapper my-3">
                             <v-btn text="BUY NOW" variant="tonal" color="orange-darken-1"></v-btn>
@@ -59,7 +59,7 @@ import ToastNotification from "@/components/ToastNotification.vue";
 import productsApi from "@/api/productsApi.js";
 
 // Vuex
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
     name: "Product",
@@ -80,10 +80,7 @@ export default {
         };
     },
     computed: {
-        ...mapState("cartModule", {
-            cart: (state) => state.cart,
-        }),
-        totalPrice() {
+        TOTAL_PRICE() {
             return this.product.data.price * this.product.quantity;
         },
     },

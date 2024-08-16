@@ -1,7 +1,7 @@
 <template>
     <div class="text-center">    
         <v-snackbar
-          v-model="localSnackbar"
+          v-model="SNACK_BAR"
           :timeout="timeout"
 		  top
         >
@@ -39,7 +39,7 @@ export default {
 		},
     },
 	computed: {
-		localSnackbar: {
+		SNACK_BAR: {
 			get() {
 				return this.modelValue;
 			},
@@ -53,7 +53,7 @@ export default {
 			this.$emit('update:snackbar', true);
 		},
 		closeSnackbar() {
-			this.localSnackbar = false;
+			this.SNACK_BAR = false;
 		}
 	},
 }
