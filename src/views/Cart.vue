@@ -1,11 +1,11 @@
 <template>
 	<DefaultLayout>
-		<v-container class="v-col-9" fluid>
+		<v-container :class="IS_CART_EMPTY ? 'v-col-6' : 'v-col-9'" fluid>
 			<v-row>
 				<v-col cols="12">
-					<h2>Shopping Cart</h2>
+					<h2 v-if="!IS_CART_EMPTY">Shopping Cart</h2>
 					<v-sheet elevation="1" border rounded>
-						<template v-if="CART_LIST?.length > 0" >
+						<template v-if="!IS_CART_EMPTY">
 							<div v-for="item in CART_LIST" :key="item.id" class="cart-item py-3 px-3">
 								<img :src="item.image" alt="cart item" width="100" height="100">
 								<div class="cart-name">
@@ -18,11 +18,18 @@
 							
 							<div class="font-bold big">
 								Total:&nbsp; <span class="price">{{ TOTAL_PRICE }}</span>
-								<v-btn text="CHECKOUT" variant="tonal" color="orange-darken-1" size="large" @click="checkout"></v-btn>
+								<v-btn :text="CONTENT.buttonText.checkout" variant="tonal" color="orange-darken-1" size="large" @click="checkout"></v-btn>
 							</div>	
 						</template>
 						<template v-else>
-							
+							<section class="cart-empty-container">
+								<div class="message-wrapper">
+									<h4 class="font-bold text-h6 py-3">{{ CONTENT.cartEmpty.title }}</h4>
+									<p class="font-thin">{{ CONTENT.cartEmpty.message }}</p>
+									<v-btn :text="CONTENT.buttonText.shopNow" variant="tonal" color="orange-darken-1" size="large" class="my-5" @click="goToHomepage"></v-btn>
+								</div>
+								<img src="@/assets/images/shopping_cart_empty.png" alt="guy holding a shopping cart" width="300" height="300">
+							</section>
 						</template>
 					</v-sheet>
 				</v-col>
@@ -38,6 +45,9 @@ import QuantityInput from "@/components/QuantityInput.vue";
 
 // Mixins
 import productMixins from "@/utils/product-mixins.js";
+
+// Static
+import STATIC_CONTENT from "@/static/content.json";
 
 // Vuex
 import { createNamespacedHelpers as nameSpace } from "vuex";
@@ -63,10 +73,16 @@ export default {
 		CART_LIST() {
 			return JSON.parse(JSON.stringify(this.vuexCart));
 		},
+		IS_CART_EMPTY() {
+			return this.CART_LIST?.length === 0;
+		},
 		TOTAL_PRICE() {
 			return this.CART_LIST.reduce((total, item) => {
 				return total + item.quantity * item.price;
 			}, 0);
+		},
+		CONTENT() {
+			return STATIC_CONTENT;
 		},
 	},
 	methods: {
@@ -93,6 +109,9 @@ export default {
 			// clear cart
 			this.clearCartVuex();
 		},
+		goToHomepage() {
+            this.$router.push('/');
+        },
 	}
 };
 </script>
@@ -125,7 +144,6 @@ export default {
 	}
 }
 
-
 .big {
 	display: flex;
 	justify-content: flex-end;
@@ -137,5 +155,13 @@ export default {
 		font-size: 1.25rem;
 		padding-right: 1.5rem;
 	}
+}
+
+.cart-empty-container {
+	display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.5rem;
 }
 </style>

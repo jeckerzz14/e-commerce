@@ -37,8 +37,8 @@
                         </v-row>
 
                         <div class="button-wrapper my-3">
-                            <v-btn text="BUY NOW" variant="tonal" color="orange-darken-1" size="large"></v-btn>
-                            <v-btn text="ADD TO CART" variant="tonal" color="deep-orange-darken-1" size="large" @click="addToCart"></v-btn>
+                            <v-btn :text="CONTENT.buttonText.buyNow" variant="tonal" color="orange-darken-1" size="large" @click="buyNow"></v-btn>
+                            <v-btn :text="CONTENT.buttonText.addToCart" variant="tonal" color="deep-orange-darken-1" size="large" @click="addToCart"></v-btn>
                         </div>
 
                         <ToastNotification 
@@ -61,6 +61,9 @@ import ToastNotification from "@/components/ToastNotification.vue";
 
 // API
 import productsApi from "@/api/productsApi.js";
+
+// Static
+import STATIC_CONTENT from "@/static/content.json";
 
 // Vuex
 import { mapActions } from 'vuex';
@@ -87,6 +90,9 @@ export default {
         TOTAL_PRICE() {
             return this.product.data.price * this.product.quantity;
         },
+        CONTENT() {
+			return STATIC_CONTENT;
+		},
     },
     async mounted() {
         await this.getProductById();
@@ -117,6 +123,9 @@ export default {
             if (qty) {
                 this.product.quantity = qty;
             }
+        },
+        buyNow() {
+            this.$router.push('/payment');
         },
     },
 }

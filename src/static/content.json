@@ -1,0 +1,17 @@
+{
+    "cartEmpty": {
+        "title": "Your Cart is Empty",
+        "message": "It looks like your cart is currently empty. Browse our store to find items you love and add them to your cart. If you need any assistance or have questions, feel free to reach out to our support team. Happy shopping!"
+    },
+    "paymentSuccess": {
+        "title": "Thank You for Your Purchase!",
+        "message": "Your order has been successfully processed. A confirmation email with your order details and tracking information is on its way. We appreciate your business and hope you enjoy your new items. If you need any help, our support team is here for you. Thank you for shopping with us!"
+    },
+    "buttonText": {
+        "buyNow": "BUY NOW",
+        "shopNow": "SHOP NOW",
+        "addToCart": "ADD TO CART",
+        "checkout": "CHECKOUT",
+        "goBackHome": "GO BACK TO HOME"
+    }
+}

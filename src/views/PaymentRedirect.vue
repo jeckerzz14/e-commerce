@@ -5,9 +5,9 @@
             <v-col cols="12">
                 <v-sheet class="payment-container" elevation="1" border rounded>
                     <div class="message-wrapper">
-                        <h4 class="font-bold text-h6 py-3">{{ success.title }}</h4>
-                        <p class="font-thin">{{ success.message }}</p>
-                        <v-btn text="GO BACK TO HOME" variant="tonal" color="orange-darken-1" size="large" class="my-5" @click="goToHomepage"></v-btn>
+                        <h4 class="font-bold text-h6 py-3">{{ CONTENT.paymentSuccess.title }}</h4>
+                        <p class="font-thin">{{ CONTENT.paymentSuccess.message }}</p>
+                        <v-btn :text="CONTENT.buttonText.goBackHome" variant="tonal" color="orange-darken-1" size="large" class="my-5" @click="goToHomepage"></v-btn>
                     </div>
                     
                     <img src="@/assets/images/payment_success.png" alt="Girl shopping in an app" width="300" height="300"/>    
@@ -22,18 +22,18 @@
 // Components
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
+// Static
+import STATIC_CONTENT from "@/static/content.json";
+
 export default {    
     name: "PaymentRedirect",
     components: {
         DefaultLayout,
     },
-    data() {
-        return {
-            success: {
-                title: "Thank You for Your Purchase!",
-                message: "Your order has been successfully processed. A confirmation email with your order details and tracking information is on its way. We appreciate your business and hope you enjoy your new items. If you need any help, our support team is here for you. Thank you for shopping with us!",
-            },
-        };
+    computed: {
+        CONTENT() {
+			return STATIC_CONTENT;
+		},
     },
     methods: {
         goToHomepage() {
