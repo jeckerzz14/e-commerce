@@ -17,7 +17,7 @@
 							</div>
 							
 							<div class="font-bold big">
-								Total:&nbsp; <span class="price">{{ TOTAL_PRICE }}</span>
+								Total:&nbsp; <span class="price">{{ vxCartTotalPrice }}</span>
 								<v-btn :text="CONTENT.buttonText.checkout" variant="tonal" color="orange-darken-1" size="large" @click="checkout"></v-btn>
 							</div>	
 						</template>
@@ -68,18 +68,14 @@ export default {
 		 * Get cart data from local storage
 		 **/
 		...cartGetters({
-			vuexCart: "cart"
+			vxCart: "cart",
+			vxCartTotalPrice: "totalPrice",
 		}),
 		CART_LIST() {
-			return JSON.parse(JSON.stringify(this.vuexCart));
+			return JSON.parse(JSON.stringify(this.vxCart));
 		},
 		IS_CART_EMPTY() {
 			return this.CART_LIST?.length === 0;
-		},
-		TOTAL_PRICE() {
-			return this.CART_LIST.reduce((total, item) => {
-				return total + item.quantity * item.price;
-			}, 0);
 		},
 		CONTENT() {
 			return STATIC_CONTENT;

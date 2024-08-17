@@ -7,14 +7,15 @@ export default {
     cart(state) {
       return state.cart;
     },
-    cartItemCount(state) {
-      return state.cart.length;
+    totalPrice(state) {
+      return state.cart.reduce((total, item) => {
+				return total + item.quantity * item.price;
+			}, 0);
     },
-    cartTotalPrice(state) {
-      return state.cart.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-      );
+    totalQuantity(state) {
+      return state.cart.reduce((total, item) => {
+				return total + item.quantity;
+			}, 0);
     },
   },
   mutations: {
