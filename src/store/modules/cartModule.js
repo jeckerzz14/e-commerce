@@ -16,9 +16,6 @@ export default {
         0
       );
     },
-    clearCart(state) {
-      state.cart = [];
-    },
   },
   mutations: {
     addToCart(state, obj) {
@@ -45,6 +42,9 @@ export default {
     },
     removeFromCart(state, itemId) {
         state.cart = state.cart.filter((item) => item.id !== itemId);
+    },
+    clearCart(state) {
+        state.cart = [];
     },
   },
   actions: {
@@ -74,6 +74,9 @@ export default {
     },
     removeFromCartVuex({ commit }, itemId) {
         commit("removeFromCart", itemId);
-    }
+    },
+    clearCartVuex({ commit }) {
+        commit("clearCart");
+    },
   },
 };

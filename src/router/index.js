@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 const HomeView = () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue');
 const Product = () => import(/* webpackChunkName: "product" */ '../views/Product.vue');
 const Cart = () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue');
+const PaymentRedirect = () => import(/* webpackChunkName: "payment" */ '../views/PaymentRedirect.vue');
 const NotFound = () => import(/* webpackChunkName: "not-found" */ '../views/NotFound.vue');
 
 const routes = [
@@ -21,6 +22,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: Cart
+  },
+  {
+    path: '/payment',
+    name: 'payment',
+    component: PaymentRedirect
   },
   {
     path: "/:catchAll(.*)",
