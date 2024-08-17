@@ -17,7 +17,7 @@
         <v-card-title class="font-bold"> {{ product?.title }} </v-card-title>
 
         <v-card-subtitle> {{ product?.category.name }} </v-card-subtitle>
-        <v-card-subtitle class="price"> ₱{{ product?.price }} </v-card-subtitle>
+        <v-card-subtitle class="price"> {{ product?.price }} </v-card-subtitle>
     </v-card>
 </section>
 </template>
@@ -38,13 +38,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-    @import "@/assets/styles/settings/_colors.scss";
-
-    .price {
-        font-size: 1.125rem;
-        color: $warning;
-        opacity: 100;
-    }
-</style>

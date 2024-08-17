@@ -1,19 +1,15 @@
 <template>
     <section class="qty-wrapper">
-        <span class="font-thin">Quantity:</span>
-        <v-row no-gutters>
-            <v-col cols="6">
-                <v-number-input
-                    v-model="currentQty"
-                    variant="outlined"
-                    control-variant="split"
-                    :inset="false"
-                    :min="minQty"
-                    :max="100"
-                    :model-value="currentQty"
-                ></v-number-input>
-            </v-col>
-        </v-row>
+        <span v-if="showText" class="font-thin">Quantity:</span>
+        <v-number-input
+            v-model="currentQty"
+            variant="outlined"
+            control-variant="split"
+            :inset="false"
+            :min="minQty"
+            :max="100"
+            :model-value="currentQty"
+        ></v-number-input>
     </section>
 </template>
 
@@ -31,6 +27,11 @@ export default {
         minQty: {
             type: Number,
             default: 1,
+            required: false,
+        },
+        showText: {
+            type: Boolean,
+            default: true,
             required: false,
         },
     },

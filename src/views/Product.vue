@@ -25,16 +25,20 @@
     
                             <v-divider></v-divider>
                             
-                            <div class="price my-3"> ₱{{ product?.data.price }} </div>
+                            <div class="price my-3"> {{ product?.data.price }} </div>
 
                             <div class="font-extra-light-italic mb-2">Total Price: ₱{{ TOTAL_PRICE || product?.data.price }}</div>
                         </div>
 
-                        <QuantityInput v-model="product.quantity" @changeQty="changeQty"/>
+                        <v-row no-gutters>
+                            <v-col cols="6">
+                                <QuantityInput v-model="product.quantity" @changeQty="changeQty"/>
+                            </v-col>
+                        </v-row>
 
                         <div class="button-wrapper my-3">
-                            <v-btn text="BUY NOW" variant="tonal" color="orange-darken-1"></v-btn>
-                            <v-btn text="ADD TO CART" variant="tonal" color="deep-orange-darken-1" @click="addToCart"></v-btn>
+                            <v-btn text="BUY NOW" variant="tonal" color="orange-darken-1" size="large"></v-btn>
+                            <v-btn text="ADD TO CART" variant="tonal" color="deep-orange-darken-1" size="large" @click="addToCart"></v-btn>
                         </div>
 
                         <ToastNotification 
@@ -138,7 +142,5 @@ export default {
 
     .price {
         font-size: 1.875rem;
-        color: $warning;
-        opacity: 100;
     }
 </style>

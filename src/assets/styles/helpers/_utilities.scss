@@ -1,7 +1,20 @@
+@import "@/assets/styles/settings/_colors.scss";
+
 .text-center {
     text-align: center;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.price {
+    font-size: 1.125rem;
+    color: $warning;
+    opacity: 100;
+
+    &::before {
+        // currency
+        content: "₱";
+    }
 }
