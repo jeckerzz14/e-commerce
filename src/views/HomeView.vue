@@ -13,7 +13,7 @@
             <h3 class="text-h6 font-bold">Products</h3>
             <v-row v-if="!products.isLoading">
                 <v-col v-for="product in products.data" :key="product.id" cols="12" md="2">
-                    <ProductList :product="product"/>
+                    <ProductCard :product="product"/>
                 </v-col>
             </v-row>
             <v-skeleton-loader type="card" v-else></v-skeleton-loader>
@@ -24,8 +24,8 @@
 <script>
 // Components
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import ProductList from "@/views/ProductList.vue";
-import CategoryList from "@/components/CategoryList.vue";
+import ProductCard from "@/components/products/ProductCard.vue";
+import CategoryList from "@/components/products/CategoryList.vue";
 
 // API
 import productsApi from "@/api/productsApi.js";
@@ -34,7 +34,7 @@ export default {
   name: "HomeView",
   components: {
     DefaultLayout,
-    ProductList,
+    ProductCard,
     CategoryList,
   },
   data() {

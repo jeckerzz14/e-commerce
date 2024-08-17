@@ -5,7 +5,7 @@
         </v-app-bar-title>
         <v-badge
             v-if="vxCartTotalQuantity > 0"
-            class="px-4"
+            :class="['px-4', { 'slide-fade-enter': isAnimate }]"
             color="red"
             :content="vxCartTotalQuantity"
             offset-x="6"
@@ -28,6 +28,11 @@ const {
 
 export default {
     name: "Header",
+    data() {
+        return {
+            isAnimate: false,
+        };
+    },
     computed: {
         ...cartGetters({
 			vxCartTotalQuantity: "totalQuantity",
@@ -38,8 +43,16 @@ export default {
             this.$router.push('/cart');
         },
     },
+    watch: {
+        vxCartTotalQuantity(val) {
+            if (val) {
+                this.isAnimate = true;
+
+                setTimeout(() => {
+                    this.isAnimate = false;
+                }, 500)
+            }
+        },
+    },
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

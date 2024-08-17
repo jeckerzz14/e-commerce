@@ -1,4 +1,7 @@
 {
+    "cart": {
+        "successAdd": "Successfully added to cart"
+    },
     "cartEmpty": {
         "title": "Your Cart is Empty",
         "message": "It looks like your cart is currently empty. Browse our store to find items you love and add them to your cart. If you need any assistance or have questions, feel free to reach out to our support team. Happy shopping!"

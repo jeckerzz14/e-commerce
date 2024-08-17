@@ -50,21 +50,7 @@ export default {
   },
   actions: {
     addToCartVuex({ commit }, obj) {
-      // Create deep copy
-      const objCopy = JSON.parse(JSON.stringify(obj));
-
-      // Build cart object
-      const cart = {
-        id: objCopy?.data.id,
-        title: objCopy?.data.title,
-        description: objCopy?.data.description,
-        price: objCopy?.data.price,
-        image: objCopy?.data.images[0],
-        categoryId: objCopy?.data.category.id,
-        categoryName: objCopy?.data.category.name,
-        quantity: objCopy?.quantity,
-      };
-      commit("addToCart", cart);
+      commit("addToCart", obj);
     },
     updateCartVuex({ commit }, obj) {
         const cart = {

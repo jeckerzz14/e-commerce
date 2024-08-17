@@ -41,7 +41,7 @@
 <script>
 // Components
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import QuantityInput from "@/components/QuantityInput.vue";
+import QuantityInput from "@/components/shared/QuantityInput.vue";
 
 // Mixins
 import productMixins from "@/utils/product-mixins.js";

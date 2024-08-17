@@ -42,8 +42,8 @@
                         </div>
 
                         <ToastNotification 
-                            message="Successfully added to cart"
                             v-model="showToastNotif"
+                            :message="CONTENT.cart.successAdd"
                         />
                     </v-col>
                 </v-sheet> 
@@ -56,8 +56,8 @@
 <script>
 // Components
 import DefaultLayout from "@/layouts/DefaultLayout.vue";
-import QuantityInput from "@/components/QuantityInput.vue";
-import ToastNotification from "@/components/ToastNotification.vue";
+import QuantityInput from "@/components/shared/QuantityInput.vue";
+import ToastNotification from "@/components/shared/ToastNotification.vue";
 
 // API
 import productsApi from "@/api/productsApi.js";
@@ -115,8 +115,18 @@ export default {
             }
         },
         addToCart() {
-            // add to store
-            this.addToCartVuex(this.product);
+            // build cart object
+            const cart = {
+                id: this.product?.data.id,
+                title: this.product?.data.title,
+                description: this.product?.data.description,
+                price: this.product?.data.price,
+                image: this.product?.data.images[0],
+                categoryId: this.product?.data.category.id,
+                categoryName: this.product?.data.category.name,
+                quantity: this.product?.quantity,
+            };
+            this.addToCartVuex(cart);
             this.showToastNotif = true;
         },
         changeQty(qty) {
