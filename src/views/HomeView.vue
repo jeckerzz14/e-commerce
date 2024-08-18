@@ -1,5 +1,17 @@
 <template>
     <DefaultLayout>
+        <!-- Search -->
+        <v-container class="v-col-9">
+            <v-text-field
+                v-model="searchParams.searchInput"
+                color="orange-lighten-1"
+                append-icon="mdi-magnify"
+                placeholder="Search product"
+                @keydown="searchProduct($event)"
+            >
+            </v-text-field>
+        </v-container>
+
         <!-- Category list -->
         <v-container class="v-col-9">
             <h3 class="text-h6 font-bold">Categories</h3>
@@ -11,11 +23,16 @@
         <!-- Product list -->
         <v-container class="v-col-9">
             <h3 class="text-h6 font-bold">Products</h3>
-            <v-row v-if="!products.isLoading">
-                <v-col v-for="product in products.data" :key="product.id" cols="12" md="2">
-                    <ProductCard :product="product"/>
-                </v-col>
-            </v-row>
+            <template v-if="!products.isLoading">
+                <v-row v-if="products?.data.length > 0">
+                    <v-col v-for="product in products.data" :key="product.id" cols="12" md="2">
+                        <ProductCard :product="product"/>
+                    </v-col>
+                </v-row>
+                <div class="py-2" v-else>
+                    <span class="font-thin">We couldn’t find any products matching your search.</span>
+                </div>
+            </template>
             <v-skeleton-loader type="card" v-else></v-skeleton-loader>
         </v-container>
     </DefaultLayout>         
@@ -46,9 +63,24 @@ export default {
       categories: {
         data: [],
         isLoading: false,
-        selectedId: null,
+      },
+      searchParams: {
+        categoryId: null,
+        searchInput: null,
       },
     };
+  },
+  watch: {
+    searchParams: {
+        handler(newVal, oldVal) {
+            // Filter
+            this.getAllProducts({
+                categoryId: newVal.categoryId || null,
+                title: newVal.searchInput || null,
+            });
+        },
+        deep: true,
+    }
   },
   async mounted() {
     await this.getAllProducts();
@@ -68,13 +100,12 @@ export default {
     },
     handleCategory (categorySelected) {
         // improvements - store in vuex-persist
-        this.categories.selectedId = categorySelected?.id;
-
-        this.getAllProducts({
-            categoryId: this.categories.selectedId || null,
-            // price_min: 10,
-            // price_max: 100,
-        });
+        this.searchParams.categoryId = categorySelected?.id;
+    },
+    searchProduct($event) {
+        setTimeout(() => {
+            this.searchParams.searchInput = $event?.target.value;
+        }, 200)
     },
   },
 };
