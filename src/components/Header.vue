@@ -1,7 +1,14 @@
 <template>
     <v-app-bar :elevation="2">
         <v-app-bar-title>
-            <router-link to="/" class="text-decoration-none">Ecommerce</router-link>            
+            <img
+                src="@/assets/images/app-logo.png"
+                alt="brand logo"
+                width="150"
+                height="54"
+                class="cursor-pointer zoom-on-hover"
+                @click="goToHomepage"
+            />
         </v-app-bar-title>
         <v-badge
             v-if="vxCartTotalQuantity > 0"
@@ -15,7 +22,11 @@
             <v-icon color="gray" size="32" class="cursor-pointer" @click="viewCart">mdi-cart-outline</v-icon>
         </v-badge>
         <v-icon v-else color="gray" size="32" class="cursor-pointer px-4" @click="viewCart">mdi-cart-outline</v-icon>
-        <div class="login-wrapper px-4">Login</div>
+
+        <!-- Profile -->
+        <v-avatar color="orange-lighten-2" class="mx-6">
+            <span class="text-h6">JT</span>
+        </v-avatar>      
     </v-app-bar>
 </template>
 
@@ -41,6 +52,9 @@ export default {
     methods: {
         viewCart() {
             this.$router.push('/cart');
+        },
+        goToHomepage() {
+            this.$router.push('/');
         },
     },
     watch: {
